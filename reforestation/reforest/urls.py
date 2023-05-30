@@ -1,0 +1,20 @@
+from django.urls import path
+from . import views
+from django.views.decorators.csrf import csrf_exempt
+
+urlpatterns = [
+    path('' ,views.home, name='home'),
+    path('reforest' ,views.index, name='reforest'),
+    path('greenspace' ,views.greenspace, name='greenspace'),
+    path('add_trees' ,views.add_trees, name='add_trees'),
+    path('edit_trees/<int:id>' ,views.reforest_edit, name='reforest-edit'),
+    path('delete_trees/<int:id>' ,views.reforest_delete, name='reforest-delete'),
+    path('search-reforest' , csrf_exempt(views.search_reforest), name='search_reforest'),
+    path('reforest_category_summary', views.reforest_category_summary, 
+         name="reforest_category_summary"),
+    path ('stats', views.stats, name='stats'),
+    path ('google', views.google, name='google'),
+    path ('export_csv', views.export_csv, name='export-csv'),
+     
+
+]

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{% url 'forest' %}">Trees</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"> Edit trees</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url 'forest-delete'  forest.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+    </div>
+  </div>
+
+
+    <div class="card">
+        <div class=" card-body">
+            <form class="" action="{% url 'forest-edit' forest.id %}" method="post">
+                {% include 'partials/_messages.html' %}
+                {% csrf_token %}
+
+            <div class="form-group">
+                <label class="fw-bold mt-2" for="">Number of trees replanted</label>
+                <input type="number" class=" form-control form-control-sm" name="trees_planted" value="{{values.trees_planted}}">
+            </div>
+
+            <div class="form-group">
+                <label class="fw-bold mt-2" for="">Group name</label>
+                <input type="text" class="form-control form-control-sm" name="description"  value="{{values.description}}">
+            </div>
+            
+        
+
+            <div class="form-group">
+                <label class="fw-bold mt-2" for="">Date Planted</label>
+                <input  type="date" class=" form-control form-control-sm" name="date" value="{{values.date | date:'Y-m-d'}}">
+            </div>
+           
+            <input type="submit" value="Save" class="btn btn-success btn-sm mt-5">
+        </form>
+        </div>
+    </div>
+
+    
+
+
+{% endblock %}

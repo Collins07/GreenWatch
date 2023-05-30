@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <p class="summary-intro">
+            Tree planting initiatives have suffered in accountability where a lot of attention has been
+            accorded to trees planted at the beginning negletting their development over time. <br>
+            Do we replace those trees that dry up or get damaged after a short period of being planted ?? <br>
+            Do we go back to replace them ??
+        </p>
+        
+     </div>
+    
+     <!-- <div class="col-md-2 mb-3">
+        <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Add Trees</a>
+     </div> -->
+</div>
+
+{% include 'partials/_messages.html' %}
+
+ <div class="container">
+    {% if forest.count %}
+
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+
+            <div id="search-input" class="form-group mb-3 ">
+                <input type="text" id="searchField2" class="form-control" placeholder="Search">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="app-table">
+        <table class="table table-stripped table-hover ">
+            <thead>
+                <tr>
+                   <th>Trees replaced</th>
+                   <th>Group name</th>
+                   <th>Date</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {% for forest in page_obj %}
+                <tr>
+                    <td>{{forest.trees_planted}}</td>
+                    <td>{{forest.description}}</td>
+                    <td>{{forest.date}}</td>
+                    
+    
+                    <!-- <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-output">
+        <table class="table table-stripped table-hover ">
+            <thead>
+                <tr>
+                   <th>Trees replaced</th>
+                   <th>Group name</th>
+                   <th>Date</th>
+                </tr>
+            </thead>
+    
+            <tbody class="table-body">
+
+               
+            </tbody>
+        </table>
+    </div>
+
+      <div class="row paginator-container">
+
+        <div id="pagination" class="col-md-8 fw-bold">
+            Showing page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+        </div>
+
+        <div class="col-md-4">
+            <ul class="pagination align-right float-right mr-auto ">
+                {% if page_obj.has_previous %}
+                <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a href="?page=1" class="page-link"> &laquo; 1</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                 {% endif %}
+                
+                 {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator_num_pages }}">{{ page_obj.paginator_num_pages }} &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+      </div>
+    
+    {% endif %}
+</div>
+
+<script src="{% static 'js/searchForest.js' %}"></script>
+
+{% endblock %}
