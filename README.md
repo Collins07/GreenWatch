@@ -1,6 +1,6 @@
 # by Collins07
 
-## GreenSpace
+## GreenWatch
 
 ## Table of Content
 
@@ -17,12 +17,12 @@
 
 ## Description
 
-GreenSpace is a web-based platform that fosters on accountable reforestation and restoration activities by groups that carry out tree-planting initiatives. More often than not, the number of trees planted is not the same number of trees that go past early growth because of negligence.The early growth stages of trees is the most crucial stage but we always put tree seedlings into the ground and leave the rest for mother nature to take care of. We have always concentrated on HOW MANY TREES WE PLANT and its now time to shift to HOW MANY OF THOSE TREES, PLANTED, REACH MATURITY.
+GreenWatch is a web-based platform that fosters on accountable reforestation and restoration activities by groups that carry out tree-planting initiatives. More often than not, the number of trees planted is not the same number of trees that go past early growth because of negligence.The early growth stages of trees is the most crucial stage but we always put tree seedlings into the ground and leave the rest for mother nature to take care of. We have always concentrated on HOW MANY TREES WE PLANT and its now time to shift to HOW MANY OF THOSE TREES, PLANTED, REACH MATURITY.
 
-GreenSpace offers a platform to monitor on the activities of groups running out tree-planting programs, be it learning institutions, NGOs, government institutions, factories, companies, social groups etc. All citizens get to visualize the summarized details also on the platform. We don't exclude individuals who also wish to be sole participants towards greening our future. GreenSpace also gives individuals an opportunity to plant trees and their efforts be rewarded. Through affiliate marketing, we strive to strike a balance between consumption and production, where we look to market for businesses and a tree is planted for every product that is bought through GreenSpace.
+GreenWatch offers a platform to monitor on the activities of groups running out tree-planting programs, be it learning institutions, NGOs, government institutions, factories, companies, social groups etc. All citizens get to visualize the summarized details also on the platform. We don't exclude individuals who also wish to be sole participants towards greening our future. GreenWatch also gives individuals an opportunity to plant trees and their efforts be rewarded. Through affiliate marketing, we strive to strike a balance between consumption and production, where we look to market for businesses and a tree is planted for every product that is bought through GreenWatch.
 
 Live link to the project
-[GreenSpace] link to  ademo video on Youtube `https://www.youtube.com/watch?v=y0ZcVxmkSEk`
+[GreenWatch] link to  ademo video on Youtube `https://www.youtube.com/watch?v=y0ZcVxmkSEk`
 
 ## Requirements
 
@@ -37,8 +37,8 @@ Live link to the project
 ## Installation
 
 + Open Terminal {Ctrl+Alt+T} 
-+ git clone `https://github.com/Collins07/GreenSpace.git`
-+ cd GreenSpace
++ git clone `https://github.com/Collins07/GreenWatch.git`
++ cd GreenWatch
 + code . or atom . based on prefered text editor
 
 ## Running Project
@@ -59,11 +59,11 @@ Live link to the project
 
 ## Project Objectives
 
-+ GreenSpace main objective is ACCOUNTABILITY for SUSTAINABILITY.
++ GreenWatch main objective is ACCOUNTABILITY for SUSTAINABILITY.
 + Hold tree-planting groups accountable in their tree-planting initiatives by doing follow ups.
 + Give farmers a platform where they can post and connect with their colleagues and supporters.
 + Educate farmers by giving them a platform to see events and seminars available that they can attend to learn on agroforestry, regenerative agriculture etc.
-+ Give a chance to individuals who wish to participate in tree planting activities to do so through GreenSpace and get a certificate for their effort.
++ Give a chance to individuals who wish to participate in tree planting activities to do so through GreenWatch and get a certificate for their effort.
 + Create partnerships with organizatiions, NGOs, learning instituitions, businesses and various industries so as to get all involved actively or proactively.
 + Act as an affiliate for businesses to raise funds that will be directed towards increasing our green spaces
 + Provide users with updated data of the progress of tree planting groups we have in the country and have registered with us.
@@ -81,7 +81,7 @@ Live link to the project
 + Users search for various groups involved in tree planting initiatives under the `summary dashboard `
 + Users can visualize summarized on charts
 + Users can actively participate in tree planting activities and get certificates for their effort.
-+ Users can purchase items from Jiji, Kilimall, Jumia through GreenSpace `Business Corner`.
++ Users can purchase items from Jiji, Kilimall, Jumia through GreenWatch `Business Corner`.
 
 
 ## BDD
