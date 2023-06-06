@@ -291,6 +291,8 @@
   text-decoration: 2px underline;
 }
 
+
+
 /* Routes to roots */
 .root{
   color: green;
@@ -462,4 +464,31 @@
   font-size: 23px;
   margin-top: 5%;
   text-align: center;
+}
+
+
+
+
+/* Media querries */
+@media only screen and (max-width: 600px) {
+  #nav-linking{
+      margin-left: 0px;
+      margin-top: 10%;
+      
+  }
+  #drop{
+      margin-left: 0px;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      
+  }
+
+  #logo{
+      color: green;
+      font-weight: bolder;
+      font-size: 33px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+
 }
