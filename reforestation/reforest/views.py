@@ -8,8 +8,7 @@ from django.core.paginator import Paginator
 import json
 import datetime
 import csv
-import xlwt
-import googlemaps
+
 
 # Create your views here.
 def search_reforest(request):
@@ -67,7 +66,7 @@ def add_trees(request):
         Reforest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=date, category=category)
         messages.success(request, 'Data saved successfully')
 
-        return redirect('index')
+        return redirect('reforest')
 
     return render(request, 'reforest/add_trees.html', context)    
 
@@ -181,12 +180,3 @@ def greenspace(request):
     return render (request, 'reforest/greenspace.html')
 
 
-def google(request):
-    address = 'JKUAT, Kenya'
-    gmaps = googlemaps.Client(key=settings.GOOGLE_MAPS_API_KEY)
-    geocode_result = gmaps.geocode(address)
-    lat = geocode_result[0]['geometry']['location']['lat']
-    lng = geocode_result[0]['geometry']['location']['lng']
-
-    context = {'lat': lat, 'lng': lng}
-    return render(request, 'reforest/home.html', context)

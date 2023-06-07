@@ -36,25 +36,35 @@
         </div>
           <ul class="nav-links">
             <li>
-              <a href="#" class="active">
+              <a href="{% url 'reforest' %}" class="active">
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{% url 'forest' %}">
                 <i class='bx bx-box' ></i>
                 <span class="links_name">Periodic records</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{% url 'home' %}">
                 <i class='bx bx-list-ul' ></i>
-                <span class="links_name"> <a href="{% url 'home' %}">Home</a></span>
+                <span class="links_name">Home</span>
                
               </a>
             </li>
+
             <li>
+              <a href="{% url 'stats' %}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">Summary Charts</span>
+               
+              </a>
+            </li>
+
+            <li>
+              
               <a href="#">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Analytics</span>
@@ -115,6 +125,7 @@
         <!-- body content -->
 
         {% block content %}
+        
         {% endblock %}
 
 
