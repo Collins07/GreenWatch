@@ -90,11 +90,11 @@
                 <span class="links_name">Setting</span>
               </a>
             </li>
-            <li class="mt-5">
+            <li class="mt-5 d-flex">
                 <i class='bx bx-log-out fw-bold'></i>
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
-                    <input class="links_name fw-bold fs-5" type="submit" value="Sign Out">
+                    <input id="signout" class="links_name fw-bold fs-6" type="submit" value="Sign Out">
                 </form>
               
             </li>

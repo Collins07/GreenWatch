@@ -20,6 +20,11 @@ html{
 #greenwatch-logo{
     margin-top: -20%;
 }
+#signout{
+  background-color: rgb(28, 134, 28);
+  border: none;
+}
+
 .sidebar.active{
   width: 20px;
 }
