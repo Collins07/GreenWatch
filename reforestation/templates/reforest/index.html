@@ -5,120 +5,151 @@
 
 {% block content %}
 
-<div class="row mt-4">
-    <div class="col-md-12">
-        <p class="summary-intro">
-            Since <span class="greenspace-summary">GreenWatch</span> is focused on accountable and responsible tree planting initiatives by different groups,
-            we provide summary details of the activities of those groups.
 
-            We give updated details on figures, progress and give the citizens a view of the same 
-            by visualizing the progress and be abe to download the summary reports
-        </p>
 
-     </div>
-    
-</div>
-
-<div class="row mt-4">
-    <div class="col-10"></div>
-    <div class="col-md-2 mb-3">
-        {% if user.is_authenticated %}
-        <a id="add-trees" class="btn btn-success" href="{% url 'add_trees' %}">Add </a>          
-        {% else %}
-  
-        {% endif %} 
-        
-     </div>
-</div>
-
-{% include 'partials/_messages.html' %}
-
-<div class="container mt-3">
-    {% if reforest.count %}
-
-    <div class="row">
-        <div class="col-md-8">
-            <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success">Export CSV</a>
+<div class="home-content mb-4">
+    <div class="overview-boxes">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Trees planted</div>
+          <div class="number">40</div>
+          
         </div>
-        <div class="col-md-4">
-
-
-            <div id="search-input" class="form-group mb-3 ">
-                <input type="text" id="searchField" class="form-control" placeholder="Search">
-            </div>
-
+        <i id="check" class='bx bxs-check-circle'></i>
+      </div>
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Trees replanted</div>
+          <div class="number">5</div>
+          
         </div>
-    </div>
-
-
-    <div class="app-table">
-        <table class="table table-stripped table-hover ">
-            <thead>
-                <tr>
-                   <th>Trees planted</th>
-                   <th>Name</th>
-                   <th>Category</th>
-                   <th>Date</th>
-                </tr>
-            </thead>
-    
-            <tbody>
-                {% for reforest in page_obj %}
-                <tr>
-                    <td>{{reforest.trees_planted}}</td>
-                    <td>{{reforest.description}}</td>
-                    <td>{{reforest.category}}</td>
-                    <td>{{reforest.date}}</td>
-                    
-    
-                    <!-- <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="table-output">
-        <table class="table table-stripped table-hover ">
-            <thead>
-                <tr>
-                   <th>Trees planted</th>
-                   <th>Name</th>
-                   <th>Category</th>
-                   <th>Date</th>
-                </tr>
-            </thead>
-    
-            <tbody class="table-body">
-
-               
-            </tbody>
-        </table>
-    </div>
-
-      <div class="row paginator-container">
-
-        <div id="pagination" class="col-md-8 fw-bold">
-            Showing page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-        </div>
-
-        <div class="col-md-4">
-            <ul class="pagination align-right float-right mr-auto ">
-                {% if page_obj.has_previous %}
-                <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a href="?page=1" class="page-link"> &laquo; 1</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
-                 {% endif %}
-                
-                 {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator_num_pages }}">{{ page_obj.paginator_num_pages }} &raquo;</a></li>
-                {% endif %}
-            </ul>
+        <i id="check" class='bx bx-recycle fw-bold' ></i>
+      </div>
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic text-start">Total trees</div>
+          <div class="number">45</div>
+          
         </div>
       </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-10"></div>
+      <div class="col-md-2 mb-3">
+          {% if user.is_authenticated %}
+          <a id="add-trees" class="btn btn-success" href="{% url 'add_trees' %}">Add </a>          
+          {% else %}
     
-    {% endif %}
-</div>
+          {% endif %} 
+          
+       </div>
+  </div>
+
+  {% include 'partials/_messages.html' %}
+  
+
+
+
+    <div class="sales-boxes">
+      <div class="recent-sales box">
+        <div class="title">Recent data</div>
+
+
+        <div class="container mt-3">
+          {% if reforest.count %}
+      
+          <div class="row">
+              <div class="col-md-8">
+                  <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success">Export CSV</a>
+              </div>
+              <div class="col-md-4">
+      
+      
+                  <div id="search-input" class="form-group mb-3 ">
+                      <input type="text" id="searchField" class="form-control" placeholder="Search">
+                  </div>
+      
+              </div>
+          </div>
+      
+      
+          <div class="app-table">
+              <table class="table table-stripped table-hover ">
+                  <thead>
+                      <tr>
+                         <th>Trees planted</th>
+                         <th>Name</th>
+                         <th>Category</th>
+                         <th>Date</th>
+                      </tr>
+                  </thead>
+          
+                  <tbody>
+                      {% for reforest in page_obj %}
+                      <tr>
+                          <td>{{reforest.trees_planted}}</td>
+                          <td>{{reforest.description}}</td>
+                          <td>{{reforest.category}}</td>
+                          <td>{{reforest.date}}</td>
+                          
+          
+                          <!-- <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      
+          <div class="table-output">
+              <table class="table table-stripped table-hover ">
+                  <thead>
+                      <tr>
+                         <th>Trees planted</th>
+                         <th>Name</th>
+                         <th>Category</th>
+                         <th>Date</th>
+                      </tr>
+                  </thead>
+          
+                  <tbody class="table-body">
+      
+                     
+                  </tbody>
+              </table>
+          </div>
+      
+            <div class="row paginator-container">
+      
+              <div id="pagination" class="col-md-8 fw-bold">
+                  Showing page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+              </div>
+      
+              <div class="col-md-4">
+                  <ul class="pagination align-right float-right mr-auto ">
+                      {% if page_obj.has_previous %}
+                      <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a href="?page=1" class="page-link"> &laquo; 1</a></li>
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                       {% endif %}
+                      
+                       {% if page_obj.has_next %}
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator_num_pages }}">{{ page_obj.paginator_num_pages }} &raquo;</a></li>
+                      {% endif %}
+                  </ul>
+              </div>
+            </div>
+          
+          {% endif %}
+      </div>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+  
 
 <script src="{% static 'js/search.js' %}"></script>
 

@@ -23,59 +23,8 @@
       
       <main>
 
-
-        <nav class="navbar navbar-expand-lg" id="navigation" >
-          <div class="container border-bottom">
-            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-              <img src="{% static 'img/logo.jpg' %}" alt="" class="bi me-2" width="65" height="55" role="img" >
-            <span id="logo" class="">GreenWatch</span>
-          </a>
-            
-            <button style="color: green;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-              <span  class="navbar-toggler-icon"></span>
-            </button>
-            <div class="container-fluid" >
-              <div class="row">
-                  <div class="col-8"></div>
-  
-                  <div class="col-4 navbar-collapse collapse"  id="navbarColor02">
-
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'logout' %}" method="post">
-                      {% csrf_token %}
-                      <input id="sign-out" class="btn btn-outline-success" type="submit" value="Log Out">
-                    </form>
-                    {% else %}
-                    <a id="nav-linking" href="{% url 'register' %}" class="btn btn-outline-success" >Sign Up</a>
-                    {% endif %}
-
-                    
-                    <ul class="nav nav-pills">
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle show " id="drop" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Explore</a>
-                        <div id="glass" class="dropdown-menu hide" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 42px);">
-                          {% if user.is_authenticated %}
-                    
-                          {% else %}
-                          <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                          {% endif %} 
-
-                          <a class="dropdown-item" href="{% url 'affiliate' %}">Business Corner</a>
-                          <a class="dropdown-item" href="{% url 'farmer' %}">Farmers' Corner</a>
-                          <a class="dropdown-item" href="{% url 'greenspace' %}">Project GreenWatch</a>
-                          <div class="dropdown-divider"></div>
-                          <h6 id="tree">Tree planting initiative</h6>
-                          <a class="dropdown-item" href="{% url 'reforest' %}">Summary Dashboard</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-              </div>
-             
-            </div>
-            
-          </div>
-        </nav>
+         <!-- Navigation bar -->
+        {% include 'partials/_navbar.html' %}
     
 
 
