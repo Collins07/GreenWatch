@@ -39,9 +39,10 @@
                 <h1 class=" fw-bold lh-1 mb-3"> 
                     <span class="releaf">Re-leaf</span>  <img src="{% static 'img/leaff.jpg' %}" alt="" class="bi mt-4" width="65" height="37" role="img" > with accountability for sustainability</h1>
                 <p >Join us in being accountable for every tree being planted in our quest to combat climate change.
-                   Tree planting process is the easiest step in this journey of reforestation but maintainance to see trees through to maturity until
+                   Tree planting process is the easiest step in this journey of reforestation but maintainance to see those trees through to maturity until
                    we achieve the set forest coverage, is our biggest hurdle. Our focus must shift from <i>" how many trees we plant today "</i> to 
-                   <i>" how many of those trees survive tomorrow "</i>. See our latest updates on tree planting activities in Kenya, our approach in ensuring we achieve this and how we connect farmers with institutions, companies and organizations that need tree seedlings and maintainance services.</p>
+                   <i>" how many of those trees survive tomorrow "</i>. See our latest updates on tree planting activities by various groups in Kenya, 
+                   our approach in bringing businesses and individuals on board through marketing and how we connect farmers with institutions, companies and organizations that need tree seedlings and maintainance services.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                   <a class="btn btn-success px-4 me-md-2" href="{% url 'reforest' %}">Summary Report</a>
                   
@@ -57,7 +58,7 @@
               <div id="wave" class="card border-success mb-3">               
                 <div class="card-body">
                   <h4 id="title" class="card-title mb-2"></h4>
-                  <p> <span class=" releaf1">GreenWatch</span> offers the platform to hold the organizations and institutions accountable in their tree planting initiatives by monitoring
+                  <p> <span class=" fw-bold releaf1">GreenWatch</span> offers the platform to hold the organizations and institutions accountable in their tree planting initiatives by monitoring
                     their activities and providing regular updates on their tree planting initiative. We also give farmers a platform to interact and contact organizations and institutions that need tree seedlings.
                     The local community may be contracted by the different groups to maintain and protect planted trees hence creating job opportunities & good relations.
                   </p>
@@ -76,23 +77,23 @@
             <h2  class="pb-2 border-bottom fw-bold">Routes to <span class="root">Roots</span></h2>
             <div class="row g-4 py-5">
 
-              <div class="col-6 d-flex align-items-start">
+              <div class="col-6 align-items-start">
                 <div>
                   <h3 class="fs-5 fw-bold">Partnerships</h3>
-                  <p>By working together with organizations, learning instituitions, companies and industries, we are able to conduct tree planting initiatives through controlled channels 
-                    and in an accountable manner. The different groups will create an account with GreenWatch, record the number of trees they plant and how many of those trees hit maturity. We will oversee their progress on our
-                    summary dashboard from the data provided by all regular updates summed up.
+                  <p>We seek partnerships with environmental organizations, corporate entities, or government agencies that are interested in supporting reforestation and agro-ecotourism initiatives.
+                    Through this, we are able to conduct tree planting initiatives through controlled channels and in an accountable manner. 
+                    These partnerships we enable us to collaborate on carbon offset programs promote agro-ecotourism packages that include visits to reforestation sites. 
                   </p>                 
                 </div>
               </div>
 
-              <div class="col-6 d-flex align-items-start">
+              <div class="col-6 align-items-start">
                 <div>
                   <h3 class="fs-5 fw-bold">Marketing</h3>
-                  <p>GreenWatch as a marketing platform for products that use trees as raw materials, ensures that we are all accountable towards
-                    this long-term sustainable goal of restoration. We are marketing for businesses that sell furnitures, paper, pulp,
-                    wood-based panels, chemicals etc and a <b>commission</b> is charged on the marketing services and the returns are channelled towards
-                    restoring our planet's rich biodiversity through reforestation
+                  <p>GreenWatch as a marketing platform for products that use trees as raw materials and eco-friendly services, ensures that we are all accountable towards
+                    this long-term sustainable goal of restoration. Through our marketing strategy,
+                     we create a balance between production and consumption as indicated under <strong>SDG 12</strong> which
+                     demands more efficient and environmentally friendly management of materials across the lifecycle, through production, consumption, and disposal.
                   </p>
                 </div>
               </div>
@@ -189,38 +190,42 @@
 
           <div class="container">
             <div class="row">
-              <h2  class="pb-2 border-bottom fw-bold">Impact</h2>  
+              <h2  class="pb-2 border-bottom fw-bold">Far<span class="root">mers</span></h2>  
               <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-2 py-2">
                 <div class="col">
                   <div class="card mb-4 rounded-3 shadow-sm border-success">
                     <div class="card-header py-3 text-bg-success border-success">
-                      <h4 class="my-0 fw-normal">Trees planted</h4>
+                      <h4 class="my-0 fw-normal">Free Marketplace!!</h4>
                     </div>
                     <div class="card-body">
-                      <h1 class="card-title pricing-card-title">0<small class="text-muted fw-light"></small></h1>
-                      <p>Trees trees panted by groups registered on GreenWatch</p>
+                      <p>GreenWatch offers farmers to market for their products on our platform with NO CHARGES incurred
+                        Post your products and interact with customers around your locality
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card mb-4 rounded-3 shadow-sm border-success">
-                    <div class="card-header py-3 text-bg-success border-success">
-                      <h4 class="my-0 fw-normal">Planted trees replaced</h4>
-                    </div>
+                  
+                  <div class="card mb-4 rounded-3 shadow-sm border-success" >
+                    <img src="{% static 'img/sell3.jpg' %}" class="  rounded-3" alt="" height="220px" loading="lazy">
                     <div class="card-body">
-                      <h1 class="card-title pricing-card-title">0<small class="text-muted fw-light"></small></h1>
-                      <p>Trees re-planted to replace the ones that dry up or end up damaged</p>
+                      
+                      <a href="{% url 'farmer' %}" class="btn btn-success">Get Started</a>
                     </div>
                   </div>
+                  
                 </div>
                 <div class="col">
                   <div class="card mb-4 rounded-3 shadow-sm border-success">
                     <div class="card-header py-3 text-bg-success border-success">
-                      <h4 class="my-0 fw-normal">Total trees</h4>
+                      <h4 class="my-0 fw-normal">Agricultural Education</h4>
                     </div>
                     <div class="card-body">
-                      <h1 class="card-title pricing-card-title">0<small class="text-muted fw-light"></small></h1>
-                      <p>The total number of trees today <strong>(all factors accounted for)</strong></p>
+                      
+                      <p>
+                        GreenWatch shares resources and information about agricultural seminars and events where
+                        farmers can learn, interact and share. Find interesting events near your locality to attend.
+                      </p>
                     </div>
                   </div>
                 </div>
