@@ -18,7 +18,7 @@
     <p>
         We give a space for farmers to learn about various events, seminars available where they can meet experts in the field of agriculture
         and learn from them. Learn on the best agricultural practices like agroforestry, regenerative agriculture, through the events and journals we share in this section
-        <a id="learn" class="btn btn-sm btn-secondary fw-bold" href="{% url 'learn' %}">Here</a>
+        <a id="learn-btn" class="btn btn-sm btn-secondary fw-bold" href="{% url 'learn' %}">Here</a>
     </p>
 </div>
 
@@ -74,7 +74,7 @@
         <div class="card-title">
             <img  src="{{image.user.profile.profile_photo.url}}" style="border-radius: 50%; margin-left: 2%;" class="rounded-circle border ml-5 mt-2  mr-3"
                  alt="" width="40" height="40">
-            <a href="" class="mt-2 user"><strong class="usernamecolor">{{image.user.username|title}}</strong></a>
+            <a href="{% url 'profile' user.username %}" class="mt-2 user"><strong class="usernamecolor">{{image.user.username|title}}</strong></a>
             <div class="caption"><p><strong></strong> {{image.caption}}</p></div>
         </div>
         <div class="card-body mb-2">
@@ -82,7 +82,7 @@
             <div class="card-text">
 
                
-              <img id="uploaded-image" src="{{image.image.url}}"  class=" card-img" />
+              <img id="uploaded-image" src="{{image.image.url}}"  class=" card-img" height="200px " width="200px" />
            </div>
         </a>
         
@@ -95,7 +95,7 @@
                 <div class="comments-date mb-4">
                     {% for comment in image.comments.all|slice:'2' %}
                   <div class="all-comments">
-                        <div class="ml-4"><strong>{{comment.user.user.username }}</strong> <span
+                        <div class="ml-4"><strong>{{ user.username }}</strong> <span
                                 class="text-secondary">{{ comment.comment }}</span>
                         </div>
                   </div>

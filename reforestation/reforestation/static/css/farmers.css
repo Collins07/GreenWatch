@@ -147,9 +147,14 @@ a{
     border-radius: 45px 0;
 
 }
-#learn{
+#learn-btn{
     display: none;
 }
+.account-img{
+    border: 3px solid red;
+    margin-top: -2%;
+}
+
 
 @media (max-width: 600px) {
       #userinfo{
@@ -171,6 +176,13 @@ a{
     #intro-farmer{
         margin: 5%;
     
+    }
+    #comment-image{
+        height: 100%;
+        width: 90%;
+    }
+    #comment-box{
+        margin: 4%;
     }
 
      
