@@ -17,8 +17,8 @@
     </p>
     <p>
         We give a space for farmers to learn about various events, seminars available where they can meet experts in the field of agriculture
-        and learn from them. Learn on the best agricultural practices like agroforestry, regenerative agriculture, through the events and journals we share in this section.
-        <a class="btn btn-md btn-secondary" href="{% url 'learn' %}">Here</a>
+        and learn from them. Learn on the best agricultural practices like agroforestry, regenerative agriculture, through the events and journals we share in this section
+        <a id="learn" class="btn btn-sm btn-secondary fw-bold" href="{% url 'learn' %}">Here</a>
     </p>
 </div>
 
@@ -82,7 +82,7 @@
             <div class="card-text">
 
                
-              <img src="{{image.image.url}}"  class=" card-img" height="300px" width="200px"/>
+              <img id="uploaded-image" src="{{image.image.url}}"  class=" card-img" />
            </div>
         </a>
         

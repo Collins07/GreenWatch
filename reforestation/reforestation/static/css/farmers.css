@@ -32,7 +32,7 @@
     border:  2px solid green;
 }
 #side-nav-farmers{
-    height: 400px;
+    height: 550px;
     overflow: scroll;
     width: 100%;
    border:  1px solid green;
@@ -147,14 +147,31 @@ a{
     border-radius: 45px 0;
 
 }
+#learn{
+    display: none;
+}
 
 @media (max-width: 600px) {
       #userinfo{
         display: none;
       }
+      #side-nav-farmers{
+        height: 550px;
+        margin-bottom: 5%;
+        margin-top: 10px;
+        
+    }
+    #uploaded-image{
+        height: 100%;
+        width: 100%;
+    }
+    #learn{
+        display: inline-block;
+    }
+    #intro-farmer{
+        margin: 5%;
+    
+    }
 
-      #learn{
-        display: none;
-      }
-
+     
   }
