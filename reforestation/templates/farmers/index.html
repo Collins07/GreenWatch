@@ -113,49 +113,7 @@
 <div class="col-md-5 mt-2" >
 
     <!-- View All users accounts  -->
-    
-    <div class="row " id="userinfo">
-        <div class="row">
-            <div class="col-md-3 ml-2">
-                <img class="rounded-circle user-img" src="{{image.user.profile.profile_photo.url}}">
-            </div>
-            <div class="col-md-6 mt-4 user-detail">
-                <span id="nameof" class=" text-secondary">
-                    <a class="side-nav-user" href="{% url 'profile' user.username %}">
-                        <span class="active" >Active:</span> {{ user.username }}
-                    </a>
-                </span> 
-                    <br>
-            </div>
-        </div>
 
-        <div class="col-md-1"></div>
-
-        <div   class="col-md-11">
-            <div id="side-nav-style" class="card  mr-2 ml-2">
-                <br>
-                <div id="visit-users" class="card-title mt-2 ml-4 ">Visit other users' Accounts</div>
-                <hr>
-                {% for user in users %}
-                <div  class="container">
-                    <div class="row">
-                        <div class="col-md-2 mr-3 mt-1 mb-2">
-                            <img class="rounded-circle" src="{{ image.user.profile.profile_photo.url }}"
-                                 width="45px" height="45px">
-                        </div>
-                        <div class="col-md-6 mr-2 mt-2">
-                            <span><a class="side-nav-user" href="{% url 'user_profile' user.username %}">{{user.username}}</a></span>
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-                    </div>
-                </div>
-
-                {% endfor %}
-            </div>
-        </div>
-        
-    </div>
  
 
     <!-- section for all events and seminars by farmers -->
