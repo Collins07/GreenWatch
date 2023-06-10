@@ -11,13 +11,14 @@
 
 <div id="intro-farmer" class="container mb-4">
     <p>
-        Farmers get a chance to sell different types of seedlings on our platform, connect with other farmers and their supporters also. We provide a common 
+        Farmers get a chance to sell different types of seedlings on our platform and connect with other farmers. We provide a common 
         space for all individuals in the agricultural sector to share and educate each other.
 
     </p>
     <p>
         We give a space for farmers to learn about various events, seminars available where they can meet experts in the field of agriculture
-        and learn from them. Farmers can learn the best agricultural practices like agroforestry, regenerative agriculture, through the events and journals we share on this section.
+        and learn from them. Learn on the best agricultural practices like agroforestry, regenerative agriculture, through the events and journals we share in this section.
+        <a class="btn btn-md btn-secondary" href="{% url 'learn' %}">Here</a>
     </p>
 </div>
 
@@ -29,8 +30,8 @@
           <div class="row">
 
             
-            <button class="btn btn-success ml-4 mb-3 upload" data-bs-toggle="modal" data-bs-target="#imageUpload" >
-                  Upload Image
+            <button style="width: 200px; margin-left: 3%;" class="btn btn-success ml-4 mb-3 upload" data-bs-toggle="modal" data-bs-target="#imageUpload" >
+                  Upload Post
             </button>
               <div class="modal fade" id="imageUpload" tabindex="-1" role="dialog"
                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -109,11 +110,11 @@
 
 
 
-<div class="col-md-5 mt-2 userinfo" >
+<div class="col-md-5 mt-2" >
 
     <!-- View All users accounts  -->
     
-    <div class="row" >
+    <div class="row " id="userinfo">
         <div class="row">
             <div class="col-md-3 ml-2">
                 <img class="rounded-circle user-img" src="{{image.user.profile.profile_photo.url}}">
@@ -159,7 +160,7 @@
 
     <!-- section for all events and seminars by farmers -->
 
-    <div class="row" >
+    <div id="learn" class="row" >
 
         <div class="col-md-1"></div>
 

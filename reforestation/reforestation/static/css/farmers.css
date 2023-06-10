@@ -147,3 +147,14 @@ a{
     border-radius: 45px 0;
 
 }
+
+@media (max-width: 600px) {
+      #userinfo{
+        display: none;
+      }
+
+      #learn{
+        display: none;
+      }
+
+  }

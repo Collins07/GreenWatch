@@ -175,4 +175,6 @@ def follow(request, to_follow):
         return redirect('user_profile', user_profile3.user.username)
 
 
-
+def learn(request):
+     
+    return render(request, 'farmers/farmers_learn.html')
