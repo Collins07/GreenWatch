@@ -1,4 +1,4 @@
-// sidenav for dashboard
+// sidenav for dashboard.
 
 let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
