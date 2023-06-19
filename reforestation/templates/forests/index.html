@@ -6,7 +6,7 @@
 {% block content %}
 
  <div class="container">
-    <div class="row home-content mb-4 mt-4">
+    <div class="row home-content mb-2 mt-4">
         <div class="col-md-12">
             <p class="summary-intro">
                 Tree planting initiatives have suffered in accountability where a lot of attention has been
@@ -17,15 +17,16 @@
             
          </div>
         
-         <!-- <div class="col-md-2 mb-3">
+         <div class="col-md-2 mb-3">
             <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Add Trees</a>
-         </div> -->
+         </div>
     </div>
  </div>
 
 {% include 'partials/_messages.html' %}
 
- <div class="container">
+
+ <div class="container p-2">
     {% if forest.count %}
 
     <div class="row">
@@ -58,7 +59,7 @@
                     <td>{{forest.date}}</td>
                     
     
-                    <!-- <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
+                    <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -107,7 +108,7 @@
 </div>
 
 
-{% include 'partials/_footer.html' %}
+
 
 <script src="{% static 'js/searchForest.js' %}"></script>
 
