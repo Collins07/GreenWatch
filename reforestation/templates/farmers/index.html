@@ -82,7 +82,7 @@
             <div class="card-text">
 
                
-              <img id="uploaded-image" src="{{image.image.url}}"  class=" card-img" height="200px " width="200px" />
+              <img id="uploaded-image" src="{{image.image.url}}"  class=" card-img" height="400px " width="100%" />
            </div>
         </a>
         
@@ -95,7 +95,7 @@
                 <div class="comments-date mb-4">
                     {% for comment in image.comments.all|slice:'2' %}
                   <div class="all-comments">
-                        <div class="ml-4"><strong>{{ user.username }}</strong> <span
+                        <div class="ml-4"><strong>{{ image.user.username }}</strong> <span
                                 class="text-secondary">{{ comment.comment }}</span>
                         </div>
                   </div>

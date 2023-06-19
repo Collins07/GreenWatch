@@ -34,27 +34,30 @@ def farmer(request):
 
 @login_required(login_url='/authentication/login')
 def profile(request, username):
-    #current_user = request.user
+    current_user = request.user
+    username = current_user.username
+    profile = Profile.objects.get(user=request.user)
    
-    #images = Image.objects.all().filter(profile_id=current_user.id)
+    images = Image.objects.all().filter(profile_id=current_user.id)
     images = request.user.posts.all()
 
   
     if request.method == 'POST':
-        #user_form = UpdateUserForm(request.POST, instance=request.user)
+        user_form = UpdateUserForm(request.POST, instance=request.user)
         prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        #if user_form.is_valid() and prof_form.is_valid():
-            #user_form.save()
+        if user_form.is_valid() and prof_form.is_valid():
+            user_form.save()
         if prof_form.is_valid():    
             prof_form.save()
             return HttpResponseRedirect(request.path_info)
     else:
-        #user_form = UpdateUserForm(instance=request.user)
+        user_form = UpdateUserForm(instance=request.user)
         prof_form = UpdateUserProfileForm(instance=request.user.profile)
     params = {
-        #'user_form': user_form,
+        'user_form': user_form,
         'form': prof_form,
         'images': images,
+        'profile': profile,
 
     }
 

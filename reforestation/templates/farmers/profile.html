@@ -18,7 +18,7 @@
                             <div class="account-heading">
                                 <span class="ml-5  username">{{ user.username }}</span>
 
-                                <a class="btn btn-sm btn-outline-success mr-3" data-bs-toggle="modal" data-bs-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
+                                <!-- <a class="btn btn-sm btn-outline-success mr-3" data-bs-toggle="modal" data-bs-target=".bd-example-modal-md"><strong>Edit Profile</strong></a> -->
 
                                 <a class="mt-4" data-bs-toggle="modal" data-bs-target="#ModalCenter"><i class="fa fa-cog " id="cog"></i></a>
                             </div>
@@ -28,8 +28,8 @@
                                 <span class="mr-5"> <strong>{{ user.profile.followers.count }}</strong> followers</span>
                                 <span class="mr-5"> <strong>{{ user.profile.following.count }}</strong> following</span>
                             </div>
-                            <h5>{{ user.profile.name }}</h5>
-                            <p class="text-secondary">{{ user.profile.bio }}</p>
+                            <!-- <h5>{{ profile.name }}</h5>
+                            <p class="text-secondary">{{ user.profile.bio }}</p> -->
                         </div>
                     </div>
                 </div>
@@ -51,6 +51,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md ">
                     <div class="modal-content">
