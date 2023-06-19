@@ -11,7 +11,7 @@
 
 <div id="intro-farmer" class="container mb-4">
     <p>
-        Farmers get a chance to sell different types of seedlings on our platform and connect with other farmers. We provide a common 
+        Farmers get a chance to sell seedlings on our platform and connect with other farmers. We provide a common 
         space for all individuals in the agricultural sector to share and educate each other.
 
     </p>
@@ -73,7 +73,7 @@
     <div id="posted-image" class="card mb-4">
         <div class="card-title">
             <img  src="{{image.user.profile.profile_photo.url}}" style="border-radius: 50%; margin-left: 2%;" class="rounded-circle border ml-5 mt-2  mr-3"
-                 alt="" width="40" height="40">
+                 alt="" width="45" height="45">
             <a href="{% url 'user_profile' image.user.username %}" class="mt-2 user"><strong class="usernamecolor">{{image.user.username|title}}</strong></a>
             <div class="caption"><p><strong></strong> {{image.caption}}</p></div>
         </div>
