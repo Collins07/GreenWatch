@@ -32,11 +32,14 @@
     <div class="sidebar">
         <div id="greenwatch-logo" class="logo-details">
             <i class='bx bxs-tree fs-1'></i>
-          <span class="logo_name fw-bold">GreenWatch</span>
+            <a href="{% url 'home' %}" style="text-decoration: none;">
+              <span class="logo_name fw-bold">GreenWatch</span>
+            </a>
+          
         </div>
           <ul class="nav-links">
             <li>
-              <a href="{% url 'reforest' %}" class="active">
+              <a href="{% url 'reforest' %}" >
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Dashboard</span>
               </a>
@@ -64,7 +67,6 @@
             </li>
 
             <li>
-              
               <a href="#">
                 <i class='bx bx-pie-chart-alt-2' ></i>
                 <span class="links_name">Analytics</span>

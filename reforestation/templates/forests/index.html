@@ -5,8 +5,9 @@
 
 {% block content %}
 
+<div class="home-content mb-4">
  <div class="container">
-    <div class="row home-content mb-2 mt-4">
+    <div class="row mb-2">
         <div class="col-md-12">
             <p class="summary-intro">
                 Tree planting initiatives have suffered in accountability where a lot of attention has been
@@ -18,13 +19,17 @@
          </div>
         
          <div class="col-md-2 mb-3">
-            <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Add Trees</a>
+            <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Update</a>
          </div>
     </div>
  </div>
 
 {% include 'partials/_messages.html' %}
 
+
+<div class="sales-boxes">
+    <div class="recent-sales box">
+      <div class="title">Updated data (every 3 months)</div>
 
  <div class="container p-2">
     {% if forest.count %}
@@ -104,7 +109,10 @@
         </div>
       </div>
     
-    {% endif %}
+       {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
 
 
