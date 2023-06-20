@@ -61,12 +61,12 @@ html{
   text-decoration: none;
 }
 .sidebar .nav-links{
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .sidebar .nav-links li{
   position: relative;
   list-style: none;
-  height: 50px;
+  height: 60px;
 }
 .sidebar .nav-links li a{
   height: 100%;

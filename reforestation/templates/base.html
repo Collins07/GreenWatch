@@ -50,18 +50,19 @@
                 <span class="links_name">Periodic records</span>
               </a>
             </li>
-            <li>
-              <a href="{% url 'home' %}">
-                <i class='bx bx-list-ul' ></i>
-                <span class="links_name">Home</span>
-               
-              </a>
-            </li>
 
             <li>
               <a href="{% url 'stats' %}">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name">Summary Charts</span>
+               
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'home' %}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">Home</span>
                
               </a>
             </li>
@@ -73,25 +74,7 @@
               </a>
             </li>
         
-            <li>
-              <a href="#">
-                <i class='bx bx-user' ></i>
-                <span class="links_name">Team</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class='bx bx-message' ></i>
-                <span class="links_name">Messages</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class='bx bx-cog' ></i>
-                <span class="links_name">Setting</span>
-              </a>
-            </li>
+            
             <li class="mt-5 d-flex">
                 <i class='bx bx-log-out fw-bold'></i>
                 <form action="{% url 'logout' %}" method="post">
