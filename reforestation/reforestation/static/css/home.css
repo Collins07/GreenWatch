@@ -50,10 +50,10 @@
   }
 
   #logo{
-    color: green;
+    color: #008000;
     font-weight: bolder;
-    margin-left: 3%;
-    font-size: 35px;
+    margin-left: 2%;
+    font-size: 33px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
@@ -490,12 +490,7 @@
       
   }
 
-  #logo{
-      color: green;
-      font-weight: bolder;
-      font-size: 33px;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
+ 
 
 
 }
