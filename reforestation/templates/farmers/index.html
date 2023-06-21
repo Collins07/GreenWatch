@@ -60,13 +60,7 @@
 
 
 
-    <!-- <form action="{% url 'farmer' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <input type="submit" class="btn btn-sm btn-success" value="Post">
-    </form> -->
-
-    <!-- Posted image -->
+   
 
     {% for image in images %}
 
@@ -91,18 +85,8 @@
 
         <p class="post-time">{{image.date_created|timesince}} ago</p>
 
-        <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}" class="main-post-comments">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
-                <div class="comments-date mb-4">
-                    {% for comment in image.comments.all|slice:'2' %}
-                  <div class="all-comments">
-                        <div class="ml-4"><strong>{{ image.user.username }}</strong> <span
-                                class="text-secondary">{{ comment.comment }}</span>
-                        </div>
-                  </div>
-                    {% empty %}
-                    {% endfor %}
-                    
-                </div>
+        <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}" class="main-post-comments"></a></span>
+                
     </div>
     {% endfor %}
 </div>
