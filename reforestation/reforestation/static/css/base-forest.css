@@ -232,6 +232,12 @@ nav .profile-details i{
   margin-top: -6px;
   font-weight: 500;
 }
+.home-content .box .number1{
+  display: inline-block;
+  font-size: 25px;
+  margin-top: 6px;
+  font-weight: bold;
+}
 
 
 
