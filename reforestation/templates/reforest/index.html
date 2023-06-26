@@ -11,8 +11,8 @@
     <div class="overview-boxes">
       <div class="box">
         <div class="right-side">
-          <div class="box-topic">Registered groups</div>
-          <div class="number">{{ page_obj|length }}</div>
+          <div class="box-topic">Number of entries</div>
+          <div class="number">{{ paginator.count }}</div>
           
         </div>
         <i id="check" class='bx bxs-check-circle'></i>
@@ -29,10 +29,11 @@
     
       <div class="box">
         <div class="right-side">
-          <div class="box-topic text-start">Total trees</div>
+          <div class="box-topic text-start">Group with highest entry</div>
           <div class="number1">{{ highest_group }}</div>
           
         </div>
+        
       </div>
     </div>
     

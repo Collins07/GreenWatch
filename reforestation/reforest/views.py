@@ -47,6 +47,7 @@ def index(request):
         'page_obj': page_obj,
         'total_trees': total_trees,
         'highest_group': highest_group,
+        'paginator': paginator
       
 
     }
