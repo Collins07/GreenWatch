@@ -8,6 +8,9 @@ from django.core.paginator import Paginator
 # from .userpreferences.models import UserPrefrence
 import json
 from django.db.models import Sum
+from django.http import Http404, JsonResponse, HttpResponse
+import datetime
+import csv
 
 
 # Create your views here.
@@ -135,12 +138,11 @@ def export_csv(request):
     response['Content-Disposition']= 'attachment; filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['Trees Planted', 'Group Name', 'Category', 'Date'])
+    writer.writerow(['Trees Planted', 'Group Name', 'Date'])
 
-    reforest=Forest.objects.all()
+    forest=Forest.objects.all()
 
-    for tree in reforest:
-        writer.writerow([tree.trees_planted, tree.description,
-                         tree.category,tree.date])
+    for tree in forest:
+        writer.writerow([tree.trees_planted, tree.description,tree.date])
         
     return response 
