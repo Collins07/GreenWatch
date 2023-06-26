@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.conf import settings
 from django.http import Http404, JsonResponse, HttpResponse
 from django.shortcuts import redirect, render
@@ -8,6 +9,7 @@ from django.core.paginator import Paginator
 import json
 import datetime
 import csv
+from django.db.models import Sum
 
 
 # Create your views here.
@@ -27,6 +29,7 @@ def search_reforest(request):
 def index(request):
     categories = Category.objects.all()
     reforest = Reforest.objects.all()
+    total_trees = reforest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 
     paginator=Paginator(reforest, 4)
     page_number = request.GET.get('page')
@@ -34,6 +37,7 @@ def index(request):
     context = {
         'reforest': reforest,
         'page_obj': page_obj,
+        'total_trees': total_trees
 
     }
     return render(request, 'reforest/index.html', context)
@@ -174,6 +178,8 @@ def export_csv(request):
                          tree.category,tree.date])
         
     return response 
+
+
 
  
 def greenspace(request):

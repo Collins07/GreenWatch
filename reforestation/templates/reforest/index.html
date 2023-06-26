@@ -12,19 +12,21 @@
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Trees planted</div>
-          <div class="number">40</div>
+          <div class="number">{{ page_obj|length }}</div>
           
         </div>
         <i id="check" class='bx bxs-check-circle'></i>
       </div>
+      
       <div class="box">
         <div class="right-side">
           <div class="box-topic">Trees replanted</div>
-          <div class="number">5</div>
+          <div class="number">{{ total_trees }}</div>
           
         </div>
         <i id="check" class='bx bx-recycle fw-bold' ></i>
       </div>
+    
       <div class="box">
         <div class="right-side">
           <div class="box-topic text-start">Total trees</div>
@@ -33,6 +35,7 @@
         </div>
       </div>
     </div>
+    
 
 
     <div class="row mt-4">
@@ -87,20 +90,26 @@
                   </thead>
           
                   <tbody>
+                    
                       {% for reforest in page_obj %}
                       <tr>
                           <td>{{reforest.trees_planted}}</td>
                           <td>{{reforest.description}}</td>
                           <td>{{reforest.category}}</td>
                           <td>{{reforest.date}}</td>
+
+                         
                           
           
                           <!-- <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
                       </tr>
                       {% endfor %}
+                    
                   </tbody>
               </table>
           </div>
+          
+          
       
           <div class="table-output">
               <table class="table table-stripped table-hover ">
