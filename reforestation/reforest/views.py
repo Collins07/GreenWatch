@@ -31,13 +31,23 @@ def index(request):
     reforest = Reforest.objects.all()
     total_trees = reforest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 
+    highest_entry = reforest.order_by('-trees_planted').first()
+    highest_group = highest_entry.description if highest_entry else None
+
+
+    
+
     paginator=Paginator(reforest, 4)
     page_number = request.GET.get('page')
     page_obj= Paginator.get_page(paginator,page_number)
+
+    
     context = {
         'reforest': reforest,
         'page_obj': page_obj,
-        'total_trees': total_trees
+        'total_trees': total_trees,
+        'highest_group': highest_group,
+      
 
     }
     return render(request, 'reforest/index.html', context)

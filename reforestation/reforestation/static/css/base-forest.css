@@ -239,6 +239,14 @@ nav .profile-details i{
   font-weight: bold;
 }
 
+.home-content .box .number1{
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+
 
 
 #check{
