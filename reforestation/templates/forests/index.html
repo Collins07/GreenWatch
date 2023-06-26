@@ -17,12 +17,55 @@
             </p>
             
          </div>
+    </div>
+ </div>
+
+
+ <div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-active">
+                    <th scope="row">Number of entries updated</th>
+                    <td>{{ paginator.count }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total trees</th>
+                    <td>{{ total_trees }}</td>
+                  </tr>
+                  
+                  <tr class="table-success">
+                    <th scope="row">Highest entry</th>
+                    <td class="fw-1000">{{ highest_group }}</td>
+                  </tr>
+                  
+                  
+                </tbody>
+              </table>
+        </div>
+        <div class="col-1"></div>
+    </div>
+ </div>
+
+ <div class="container">
+    <div class="row mb-2">
+        <div class="col-md-12">
+         </div>
         
          <div class="col-md-2 mb-3">
             <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Update</a>
          </div>
     </div>
  </div>
+
+
 
 {% include 'partials/_messages.html' %}
 

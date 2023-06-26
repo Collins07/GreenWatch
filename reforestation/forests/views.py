@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 # from .userpreferences.models import UserPrefrence
 import json
+from django.db.models import Sum
 
 
 # Create your views here.
@@ -26,6 +27,10 @@ def search_forest(request):
 def forest(request):
     categories = Reason.objects.all()
     forest = Forest.objects.all()
+    total_trees = forest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
+
+    highest_entry = forest.order_by('-trees_planted').first()
+    highest_group = highest_entry.description if highest_entry else None
 
     paginator=Paginator(forest, 4)
     page_number = request.GET.get('page')
@@ -33,6 +38,9 @@ def forest(request):
     context = {
         'forest': forest,
         'page_obj': page_obj,
+        'paginator': paginator,
+        'total_trees': total_trees,
+        'highest_group': highest_group,
 
     }
     return render(request, 'forests/index.html', context)
@@ -120,3 +128,19 @@ def forest_delete(request,id):
     forest.delete()
     messages.error(request, 'Your data has been deleted')
     return redirect('forest')
+
+
+def export_csv(request):
+    response = HttpResponse(content_type = 'text/csv')
+    response['Content-Disposition']= 'attachment; filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['Trees Planted', 'Group Name', 'Category', 'Date'])
+
+    reforest=Forest.objects.all()
+
+    for tree in reforest:
+        writer.writerow([tree.trees_planted, tree.description,
+                         tree.category,tree.date])
+        
+    return response 
