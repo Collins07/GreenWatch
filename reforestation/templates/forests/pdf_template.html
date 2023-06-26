@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reforestation Data</title>
+    <style>
+        /* Add your desired CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reforestation Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Trees planted</th>
+                <th>Name</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forest in reforest_entries %}
+            <tr>
+                <td>{{ forest.trees_planted }}</td>
+                <td>{{ forest.description }}</td>
+                <td>{{ forest.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

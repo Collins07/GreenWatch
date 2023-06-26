@@ -85,9 +85,12 @@
     {% if forest.count %}
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 d-flex">
             <div id="export-csv" class="col-md-8">
                 <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success">Download CSV</a>
+            </div>
+            <div id="export-csv" class="col-md-8">
+                <a href="{% url 'export-pdf' %}" class="btn btn-sm btn-outline-danger">Download PDF</a>
             </div>
         </div>
         <div class="col-md-4">

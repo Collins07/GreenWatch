@@ -27,6 +27,9 @@ soupsieve = "==2.4"
 sqlparse = "==0.4.3"
 tzdata = "==2023.2"
 urllib3 = "==1.26.15"
+reportlab = "==4.0.4"
+environ = "*"
+xhtml2pdf = "*"
 
 [dev-packages]
 

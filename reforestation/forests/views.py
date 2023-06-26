@@ -12,6 +12,16 @@ from django.http import Http404, JsonResponse, HttpResponse
 import datetime
 import csv
 
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
+from io import BytesIO
+
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+
+
 
 # Create your views here.
 def search_forest(request):
@@ -146,3 +156,19 @@ def export_csv(request):
         writer.writerow([tree.trees_planted, tree.description,tree.date])
         
     return response 
+
+
+def export_pdf(request):
+    reforest_entries = Forest.objects.all()
+
+    context = {'reforest_entries': reforest_entries}
+
+    template_path = 'forests/pdf_template.html'
+    html = render_to_string(template_path, context)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Reforestation.pdf"'
+
+    pisa.CreatePDF(html, dest=response, pagesize=letter)
+
+    return response

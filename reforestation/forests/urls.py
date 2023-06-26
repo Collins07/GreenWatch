@@ -9,6 +9,7 @@ urlpatterns = [
     path('delete_forest/<int:id>' ,views.forest_delete, name='forest-delete'),
      path('search-forest' , csrf_exempt(views.search_forest), name='search_forest'),
      path ('export_csv', views.export_csv, name='export-csv'),
+     path ('export_pdf', views.export_pdf, name='export-pdf'),
 
 
 ]
