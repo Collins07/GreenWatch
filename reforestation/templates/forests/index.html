@@ -62,7 +62,12 @@
          </div>
         
          <div class="col-md-2 mb-3">
-            <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Update</a>
+          {% if user.is_authenticated %}
+          <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Update</a>         
+          {% else %}
+    
+          {% endif %}
+           
          </div>
     </div>
  </div>
@@ -112,8 +117,12 @@
                     <td>{{forest.description}}</td>
                     <td>{{forest.date}}</td>
                     
-    
-                    <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                    {% if user.is_authenticated %}
+                    <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>          
+                    {% else %}
+                
+                    {% endif %} 
+        
                 </tr>
                 {% endfor %}
             </tbody>
