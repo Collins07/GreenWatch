@@ -12,7 +12,7 @@ from django.http import Http404, JsonResponse, HttpResponse
 import datetime
 import csv
 
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string, get_template
 from xhtml2pdf import pisa
 from io import BytesIO
 
@@ -159,16 +159,26 @@ def export_csv(request):
 
 
 def export_pdf(request):
+    # Retrieve the reforestation entries
     reforest_entries = Forest.objects.all()
 
+    # Render the template with the reforestation entries
+    template = get_template('forests/pdf_template.html')
     context = {'reforest_entries': reforest_entries}
+    html = template.render(context)
 
-    template_path = 'forests/pdf_template.html'
-    html = render_to_string(template_path, context)
+    # Create a file-like object to write the PDF data
+    result = BytesIO()
 
+    # Convert HTML to PDF
+    pisa.CreatePDF(html, dest=result)
+
+    # Set the appropriate response headers for PDF file download
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="Reforestation.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="Reforestation_Report.pdf"'
 
-    pisa.CreatePDF(html, dest=response, pagesize=letter)
+    # Get the value of the BytesIO buffer and write it to the response
+    pdf = result.getvalue()
+    response.write(pdf)
 
     return response
