@@ -10,7 +10,7 @@ from django.views.generic.detail import DetailView
 
 
 # Create your views here.
-@login_required(login_url='/authentication/login')
+
 def farmer(request):
     images = Image.objects.all()
     users = User.objects.exclude(id=request.user.id)

@@ -82,6 +82,9 @@ html{
 .sidebar .nav-links li a:hover{
   background: white;
 }
+#register-dashboard:hover{
+  background: #008000;
+}
 .sidebar .nav-links li i{
   min-width: 60px;
   text-align: center;

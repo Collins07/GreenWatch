@@ -74,16 +74,37 @@
                
               </a>
             </li>
+
+            {% if user.is_authenticated %}
+
+            <li class="mt-5 d-flex">
+              <i class='bx bx-log-out fw-bold fs-3'></i>
+              <form action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <input id="signout" class="links_name fw-bold fs-6" type="submit" value="Sign Out">
+              </form>
+            
+            </li>
+                    
+            {% else %}
+
+            <li class="mt-5 d-flex">
+              <i class='bx bxs-user-check fw-bold fs-3 mt-3'></i>
+              <a id="register-dashboard" href="{% url 'login' %}" class="text-black links_name fw-bold fs-6" >Login</a>
+            
+           </li>
+
+           <li class=" d-flex">
+            <i class='bx bxs-user-account fw-bold fs-3 mt-3'></i>
+            <a id="register-dashboard" href="{% url 'register' %}" class="text-black links_name fw-bold fs-6" >Register</a>
+            
+          
+           </li>
+                         
+            {% endif %}
         
             
-            <li class="mt-5 d-flex">
-                <i class='bx bx-log-out fw-bold'></i>
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <input id="signout" class="links_name fw-bold fs-6" type="submit" value="Sign Out">
-                </form>
-              
-            </li>
+            
           </ul>
       </div>
 

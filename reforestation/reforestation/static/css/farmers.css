@@ -124,16 +124,12 @@ a{
     margin-top: 5%;
 }
 #intro-farmer{
-    height: 100%;
-    
-    padding: 4%;
-    border: 1px solid rgb(186, 231, 157);
-    font-size: 17px;
-    background: #DAD299;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #B0DAB9, #DAD299); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 45px 0;
+   
+   display: none;
 
+}
+#seedlings-post{
+    margin-top: 2%;
 }
 #learn-btn{
     display: none;
@@ -148,7 +144,7 @@ a{
   }
 
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
       #userinfo{
         display: none;
       }
@@ -164,15 +160,28 @@ a{
     }
     #learn{
         display: inline-block;
+        margin: 2px;
     }
-    #intro-farmer{
-        margin: 5%;
     
-    }
    
    
     #learn-btn{
         display: inline-block;
+    }
+    #intro-farmer{
+        display: block;
+        margin: 4%;
+        height: 100%;
+        width: 92%;
+        border: 1px solid rgb(186, 231, 157);
+        font-size: 17px;
+        border-radius: 45px 0px;
+        background: #DAD299;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #B0DAB9, #DAD299); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    #seedlings-post{
+        margin-top: 1%;
     }
 
      
