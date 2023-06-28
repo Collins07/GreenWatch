@@ -159,25 +159,25 @@ def export_csv(request):
 
 
 def export_pdf(request):
-    # Retrieve the reforestation entries
+   
     reforest_entries = Forest.objects.all()
 
-    # Render the template with the reforestation entries
+   
     template = get_template('forests/pdf_template.html')
     context = {'reforest_entries': reforest_entries}
     html = template.render(context)
 
-    # Create a file-like object to write the PDF data
+    
     result = BytesIO()
 
-    # Convert HTML to PDF
+   
     pisa.CreatePDF(html, dest=result)
 
-    # Set the appropriate response headers for PDF file download
+    
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="Reforestation_Report.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="Reforestation & Afforestation Periodic updates.pdf"'
 
-    # Get the value of the BytesIO buffer and write it to the response
+   
     pdf = result.getvalue()
     response.write(pdf)
 

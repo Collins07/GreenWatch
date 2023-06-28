@@ -11,6 +11,12 @@ import datetime
 import csv
 from django.db.models import Sum
 
+from xhtml2pdf import pisa
+from io import BytesIO
+
+from django.template.loader import render_to_string, get_template
+
+
 
 # Create your views here.
 def search_reforest(request):
@@ -189,6 +195,30 @@ def export_csv(request):
                          tree.category,tree.date])
         
     return response 
+
+
+def export_pdfs(request):
+    reforest_entries = Reforest.objects.all()
+
+    
+    template = get_template('reforest/main_pdf_template.html')
+    context = {'reforest_entries': reforest_entries}
+    html = template.render(context)
+
+    result = BytesIO()
+
+    
+    pisa.CreatePDF(html, dest=result)
+
+    
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Reforestation & Afforestation Report.pdf"'
+
+
+    pdf = result.getvalue()
+    response.write(pdf)
+
+    return response
 
 
 

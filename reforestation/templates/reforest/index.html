@@ -65,8 +65,13 @@
           {% if reforest.count %}
       
           <div class="row">
-              <div id="export-csv" class="col-md-8">
-                  <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success">Export CSV</a>
+              <div id="export-csv" class="col-md-8 d-flex justify-content-between">
+                    <div id="export-csv" class="col-md-6">
+                      <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success btn-rounded">Export CSV</a>
+                  </div>
+                  <div id="export-csv" class="col-md-6">
+                      <a href="{% url 'export-pdfs' %}" class="btn btn-sm btn-outline-danger btn-rounded">Export PDF</a>
+                  </div>
               </div>
               <div class="col-md-4">
       
