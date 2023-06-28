@@ -104,11 +104,7 @@ a{
     font-weight: bold;
     font-size: 18px;
 }
-.single-post-comment{
-    text-decoration: underline;
-    color: green;
-    font-weight: bold;
-}
+
 .main-post{
     display: flex;
 }
@@ -118,15 +114,7 @@ a{
     margin-left: 1%;
     font-weight: bold;
 }
-.main-post-comments{
-    text-decoration: none;
-    margin-left: 2%;
-    color: green;
-    font-weight: bold;
-}
-.all-comments{
-    margin-left: 2%;
-}
+
 .post-time{
     margin-left: 2%;
     font-weight: bold;
@@ -155,6 +143,10 @@ a{
     margin-top: -2%;
 }
 
+.search-input{
+    box-shadow: rgba(7, 150, 38, 0.842) 0px 2px 8px 0px;
+  }
+
 
 @media (max-width: 600px) {
       #userinfo{
@@ -177,13 +169,8 @@ a{
         margin: 5%;
     
     }
-    #comment-image{
-        height: 100%;
-        width: 90%;
-    }
-    #comment-box{
-        margin: 4%;
-    }
+   
+   
     #learn-btn{
         display: inline-block;
     }

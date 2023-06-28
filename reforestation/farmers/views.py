@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Image,Profile,Comment,Follow
-from .forms import PostForm, UpdateUserForm, UpdateUserProfileForm, CommentForm
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from .models import Image,Profile,Follow
+from .forms import PostForm, UpdateUserProfileForm, CommentForm
+from django.http import  HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.generic.detail import DetailView
+
 
 # Create your views here.
 @login_required(login_url='/authentication/login')
@@ -43,18 +44,15 @@ def profile(request, username):
 
   
     if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, instance=request.user)
-        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_form.is_valid() and prof_form.is_valid():
-            user_form.save()
+        
         if prof_form.is_valid():    
             prof_form.save()
             return HttpResponseRedirect(request.path_info)
     else:
-        user_form = UpdateUserForm(instance=request.user)
+       
         prof_form = UpdateUserProfileForm(instance=request.user.profile)
     params = {
-        'user_form': user_form,
+      
         'form': prof_form,
         'images': images,
         'profile': profile,
@@ -112,35 +110,6 @@ def user_profile(request, username):
     return render(request, 'farmers/user_profile.html', params)   
 
 
-@login_required(login_url='/authentication/login')
-def post_comment(request, id):
-    image = get_object_or_404(Image, pk=id)
-    is_liked =  False
-    if Image.objects.filter(id=request.user.id):
-        
-        is_liked = True
-
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            savecomment = form.save(commit=False)
-            savecomment.image = image
-            savecomment.user = request.user
-            savecomment.save()
-
-            return HttpResponseRedirect(request.path_info)
-    else:
-        form = CommentForm()
-    params = {
-        'image': image,
-        'form': form,
-        'is_liked': is_liked,
-        'total_likes': image.total_likes()
-
-    }
-    return render(request, 'farmers/single_post.html', params)
-
-
 
 
 
@@ -176,8 +145,40 @@ def follow(request, to_follow):
         follow_s = Follow(follower=request.user.profile, followed=user_profile3)
         follow_s.save()
         return redirect('user_profile', user_profile3.user.username)
+    
+
+
+@login_required(login_url='/authentication/login')
+def post_comment(request, id):
+    image = get_object_or_404(Image, pk=id)
+    is_liked =  False
+    if Image.objects.filter(id=request.user.id):
+        
+        is_liked = True
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            savecomment = form.save(commit=False)
+            savecomment.image = image
+            savecomment.user = request.user
+            savecomment.save()
+
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
+    params = {
+        'image': image,
+        'form': form,
+        'is_liked': is_liked,
+        'total_likes': image.total_likes()
+
+    }
+    return render(request, 'farmers/single_post.html', params)
 
 
 def learn(request):
      
     return render(request, 'farmers/farmers_learn.html')
+
+

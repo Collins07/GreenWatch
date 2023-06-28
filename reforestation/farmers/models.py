@@ -68,19 +68,6 @@ class Image(models.Model):
         images = cls.objects.get(id=image_id)
         return images
 
-    @property
-    def get_all_comments(self):
-        return self.comments.all()   
-
-    def total_likes(self):
-        return Image
-
-     
-
-    def __str__(self):
-            return f'{self.user.name} Image'
-
-
 class Comment(models.Model):
     comment = models.TextField()
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
@@ -91,7 +78,15 @@ class Comment(models.Model):
         return f'{self.user.name} Image'
 
     class Meta:
-        ordering = ["-pk"]  
+        ordering = ["-pk"]    
+
+    def total_likes(self):
+        return Image
+
+
+
+
+
 
 
 class Follow(models.Model):
