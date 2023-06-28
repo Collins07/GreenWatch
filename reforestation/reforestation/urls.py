@@ -24,7 +24,6 @@ urlpatterns = [
     path('authentication/', include('authentication.urls')),
     path('farmers/', include('farmers.urls')),
     path('forests/', include('forests.urls')),
-    path('affiliate/', include('affiliate.urls')),
     path('carbon/', include('carbon.urls')),
 
     
