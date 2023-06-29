@@ -145,7 +145,7 @@
 
   .releaf1{
     color: green;
-    font-size: 25px;
+    font-size: 22px;
   }
 
 
@@ -237,13 +237,14 @@
 
 }
 #image3{
-  background-image: url('../img/grow6.jpg');
+  background-image: url('../img/carbon5.jpg');
   background-size: cover;
 
 }
 #image4{
   background-image: url('../img/kids.jpg');
   background-size: cover;
+  
 
 }
 #image5{
@@ -488,6 +489,9 @@
       margin-top: 10%;
       margin-bottom: 10%;
       
+  }
+  #hanging-icons{
+    display: block;
   }
 
  
