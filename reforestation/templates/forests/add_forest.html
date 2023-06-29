@@ -12,7 +12,7 @@
   </div>
 
 
-    <div class="container p-4">
+    <div class="container p-4 mt-5">
         <div class="card mt-5">
             <div class=" card-body">
                 <form class="" action="{% url 'add_forest' %}" method="post">
@@ -20,7 +20,7 @@
                     {% csrf_token %}
     
                 <div class="form-group">
-                    <label class="fw-bold mt-2" for="">Number of trees replanted</label>
+                    <label class="fw-bold mt-2" for="">Number of trees</label>
                     <input type="number" class=" form-control form-control-sm" name="trees_planted" value="{{values.trees_planted}}">
                 </div>
     
@@ -32,7 +32,7 @@
                
     
                 <div class="form-group">
-                    <label class="fw-bold mt-2" for="">Date Planted</label>
+                    <label class="fw-bold mt-2" for="">Date of update</label>
                     <input type="date" class=" form-control form-control-sm" name="date">
                 </div>
                

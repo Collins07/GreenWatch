@@ -33,7 +33,7 @@ def search_reforest(request):
 
 
 def index(request):
-    categories = Category.objects.all()
+    
     reforest = Reforest.objects.all()
     total_trees = reforest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 

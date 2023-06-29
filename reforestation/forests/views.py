@@ -38,7 +38,7 @@ def search_forest(request):
 
 
 def forest(request):
-    categories = Reason.objects.all()
+    
     forest = Forest.objects.all()
     total_trees = forest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 
