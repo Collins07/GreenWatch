@@ -118,7 +118,7 @@ html{
 .home-section nav{
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 60px;
   background: #fff;
   display: flex;
   align-items: center;
