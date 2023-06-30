@@ -19,7 +19,7 @@
 .screen {		
 	background: linear-gradient(90deg, #7bc47f, #3e8d11);		
 	position: relative;	
-	height: 550px;
+	height:600px;
 	width: 500px;	
 	box-shadow: 0px 0px 24px #084c05;
 }
@@ -176,3 +176,20 @@
 .social-login__icon:hover {
 	transform: scale(1.5);	
 }
+
+
+@media (max-width: 700px) {
+	.screen{
+	  max-width: 100%;
+	  margin-top: 5%;
+	  margin-bottom: 10%;
+	 
+	}
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;	
+		font-family: Raleway, sans-serif;
+		overflow-x: hidden;
+	}
+}	
