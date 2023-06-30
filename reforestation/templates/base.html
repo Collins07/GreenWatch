@@ -8,8 +8,7 @@
     <meta name="description" content="">
     <title>
         GreenLead
-        {% block title %}
-        {% endblock %}
+      
     </title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" type="module"></script>
@@ -114,17 +113,16 @@
         <nav>
           <div class="sidebar-button">
             <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Summary Dashboard</span>
+            <span class="d-flex" id="dashboard">
+              <img src="{% static 'img/greenlg1.jpg' %}" alt="" class="bi me-2" width="55" height="50" role="img" >
+            </span>
+            <span class="dashboard">Summary</span>
+            
           </div>
           <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <i class='bx bx-search' ></i>
-          </div>
-          <div class="profile-details">
-            
-            <span class="admin_name">Collins Nyakoe</span>
             
           </div>
+         
         </nav>
 
 
