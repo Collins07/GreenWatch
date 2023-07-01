@@ -97,6 +97,9 @@ def home(request):
     return render(request, 'reforest/home.html')
 
 
+def about(request):
+    return render(request, 'reforest/about.html')
+
 
 
 def reforest_edit(request, id):
