@@ -1,6 +1,6 @@
 
 from django.http import Http404, JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required,permission_required
 from .models import Forest, Reason
 from django.contrib import messages
@@ -20,6 +20,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from django.db.models import F
+from reforest.models import Reforest
 
 
 
@@ -42,8 +44,24 @@ def forest(request):
     forest = Forest.objects.all()
     total_trees = forest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 
+    first_entry_trees = Reforest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+    second_entry_trees = forest.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+
     highest_entry = forest.order_by('-trees_planted').first()
     highest_group = highest_entry.description if highest_entry else None
+
+    diff_trees = []
+    for first_entry in first_entry_trees:
+        description = first_entry['description']
+        first_entry_trees_planted = first_entry['trees_planted']
+        second_entry = second_entry_trees.filter(description=description).first()
+        if second_entry:
+            second_entry_trees_planted = second_entry['trees_planted']
+            diff_trees.append({
+                'description': description,
+                'trees_difference': second_entry_trees_planted - first_entry_trees_planted,
+            })
+
 
     paginator=Paginator(forest, 4)
     page_number = request.GET.get('page')
@@ -54,6 +72,7 @@ def forest(request):
         'paginator': paginator,
         'total_trees': total_trees,
         'highest_group': highest_group,
+         'diff_trees': diff_trees,
 
     }
     return render(request, 'forests/index.html', context)
@@ -96,7 +115,7 @@ def add_forest(request):
 
 
 def forest_edit(request, id):
-    forest = Forest.objects.get(pk=id)
+    forest = get_object_or_404(Forest, pk=id, owner=request.user)
     reasons = Reason.objects.all()
 
     context = {
@@ -104,30 +123,26 @@ def forest_edit(request, id):
         'values': forest,
         'reasons': reasons
     }
+
     if request.method == 'GET':
-        
         return render(request, 'forests/edit_forest.html', context)
+    
     if request.method == 'POST':
         trees_planted = request.POST['trees_planted']
-
-        if not trees_planted:
-            messages.error(request,'Number of trees replaced required !!!')
-            return render(request, 'forests/edit_forest.html', context)
         description = request.POST['description']
         date = request.POST['date']
- 
-        
-    if request.method == 'POST':
-        description = request.POST['description']
+
+        if not trees_planted:
+            messages.error(request, 'Number of trees planted is required!')
+            return render(request, 'forests/edit_forest.html', context)
 
         if not description:
-            messages.error(request,' The name of your group is required !!!')
+            messages.error(request, 'The name of your group is required!')
             return render(request, 'forests/edit_forest.html', context)
-        
 
-        forest.trees_planted=trees_planted
-        forest.description=description
-        forest.date=date
+        forest.trees_planted = trees_planted
+        forest.description = description
+        forest.date = date
 
         forest.save()
         messages.success(request, 'Your data has been updated successfully')
@@ -182,3 +197,36 @@ def export_pdf(request):
     response.write(pdf)
 
     return response
+
+
+def calculate_trees_difference(first_entry_trees, second_entry_trees):
+    diff_trees = []
+    for first_entry in first_entry_trees:
+        description = first_entry['description']
+        first_entry_trees_planted = first_entry['trees_planted']
+        second_entries = second_entry_trees.filter(description=description).order_by('-date')
+        if second_entries:
+            second_entry = second_entries.first()
+            second_entry_trees_planted = second_entry['trees_planted']
+            difference = second_entry_trees_planted - first_entry_trees_planted
+            percentage = (second_entry_trees_planted/ first_entry_trees_planted) * 100
+            diff_trees.append({
+                'description': description,
+                'percentage': round(percentage, 2),
+                'trees_difference': difference,
+            })
+    return diff_trees
+
+
+
+def difference(request):
+    first_entry_trees = Reforest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+    second_entry_trees = Forest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+
+    diff_trees = calculate_trees_difference(first_entry_trees, second_entry_trees)
+
+    context = {
+        'diff_trees': diff_trees,
+    }
+
+    return render(request, 'forests/difference.html', context)

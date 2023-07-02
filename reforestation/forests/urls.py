@@ -10,6 +10,7 @@ urlpatterns = [
      path('search-forest' , csrf_exempt(views.search_forest), name='search_forest'),
      path ('export_csv', views.export_csv, name='export-csv'),
      path ('export_pdf', views.export_pdf, name='export-pdf'),
+    path ('trend', views.difference, name='trend'),
 
 
 ]
