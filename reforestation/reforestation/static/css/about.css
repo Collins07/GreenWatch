@@ -446,4 +446,32 @@ body {
     .breadcrumbs ol li {
       display: inline-block;
     }
+    .team .member .member-info {
+        position: absolute;
+        bottom: -50px;
+        left: 20px;
+        right: 90px;
+        background: #fff;
+        padding: 20px 15px;
+        color: #15222b;
+        box-shadow: 0px 2px 15px #2b7c2b;
+        overflow: hidden;
+        transition: 0.5s;
+      }
+  }
+
+  @media (max-width: 700px) {
+   
+    .team .member .member-info {
+        position: absolute;
+        bottom: -50px;
+        left: 20px;
+        right: 20px;
+        background: #fff;
+        padding: 20px 15px;
+        color: #15222b;
+        box-shadow: 0px 2px 15px #2b7c2b;
+        overflow: hidden;
+        transition: 0.5s;
+      }
   }
