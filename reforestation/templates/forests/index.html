@@ -126,9 +126,7 @@
                     <td>{{forest.description}}</td>
                     <td>{{forest.date}}</td>
 
-                    {% if user.is_authenticated %}
-                        <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>          
-                    {% endif %} 
+                   
                 
                 </tr>
                 {% endfor %}
