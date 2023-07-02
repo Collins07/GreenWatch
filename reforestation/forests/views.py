@@ -16,6 +16,7 @@ import csv
 from django.template.loader import render_to_string, get_template
 from xhtml2pdf import pisa
 from io import BytesIO
+from dateutil import parser
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -86,26 +87,34 @@ def add_forest(request):
         'values': request.POST,
     }
 
-    # if request.method == 'GET':
-    #     trees_planted = request.POST['trees_planted']
+  
     
     if request.method == 'POST':
         trees_planted = request.POST['trees_planted']
+        description = request.POST['description']
+        date_str = request.POST['date']
 
         if not trees_planted:
-            messages.error(request,'Number of trees replaced required !!!')
+            messages.error(request, 'Number of trees planted is required!')
             return render(request, 'forests/add_forest.html', context)
-        description = request.POST['description']
-        date = request.POST['date']
-
-        
-    if request.method == 'POST':
-        description = request.POST['description']
 
         if not description:
-            messages.error(request,' The name of your group is required !!!')
+            messages.error(request, 'The name of your group is required!')
             return render(request, 'forests/add_forest.html', context)
         
+         # Parse date string into date object
+        try:
+            date = parser.parse(date_str).date()
+        except ValueError:
+            messages.error(request, 'Invalid date format. Please provide a valid date.')
+            return render(request, 'forests/add_forest.html', context)
+
+
+        # Check if the date is in the past or today
+        if date > str(date.today()):
+            messages.error(request, 'Invalid date. Please select a past or today\'s date.')
+            return render(request, 'forests/add_forest.html', context)
+
         Forest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=date)
         messages.success(request, 'Data saved successfully')
 

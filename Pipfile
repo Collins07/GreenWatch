@@ -30,6 +30,7 @@ urllib3 = "==1.26.15"
 reportlab = "==4.0.4"
 environ = "*"
 xhtml2pdf = "*"
+python-dateutil = "*"
 
 [dev-packages]
 
