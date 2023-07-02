@@ -1,4 +1,5 @@
 
+from operator import itemgetter
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required,permission_required
@@ -224,6 +225,9 @@ def difference(request):
     second_entry_trees = Forest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
 
     diff_trees = calculate_trees_difference(first_entry_trees, second_entry_trees)
+    
+     # Sort the diff_trees list based on the percentage in descending order
+    diff_trees = sorted(diff_trees, key=itemgetter('percentage'), reverse=True)
 
     context = {
         'diff_trees': diff_trees,
