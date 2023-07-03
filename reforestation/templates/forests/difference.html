@@ -6,22 +6,6 @@
 {% block content %}
 
 <div class="home-content mb-4">
- <div class="container">
-    <div class="row mb-2">
-        <div class="col-md-12">
-            <p class="summary-intro">
-                Tree planting initiatives have suffered in accountability where a lot of attention has been
-                accorded to trees planted at the beginning negletting their development over time. <br>
-                Do we replace those trees that dry up or get damaged after a short period of being planted ?? <br>
-                Do we go back to replace them ?? <br> <br>
-                Update this section in reference to your intial entries in the <strong>Dashboard</strong> section after every 3 months. This will enable us
-                to conduct analysis on survival rates of trees planted and come up with possible sustainable solutions in ensuring
-                the survival rate is optimal
-            </p>
-            
-         </div>
-    </div>
- </div>
 
 
  <div class="container">
@@ -31,22 +15,12 @@
             <table class="table table-hover">
                 <thead>
                   <tr>
-                    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-active">
-                    <th scope="row">Number of entries updated</th>
-                    <td>{{ paginator.count }}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Total trees</th>
-                    <td>{{ total_trees }}</td>
-                  </tr>
                   
                   <tr class="table-success">
                     <th scope="row">Highest entry</th>
-                    <td class="fw-1000">{{ highest_group }}</td>
                   </tr>
                   
                   
@@ -73,16 +47,13 @@
     <div class="row">
         <div class="col-md-8 d-flex justify-content-between">
             <div id="export-csv" class="col-md-6">
-                <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success">Download CSV</a>
-            </div>
-            <div id="export-csv" class="col-md-6">
                 <a href="{% url 'export-pdf' %}" class="btn btn-sm btn-outline-danger">Download PDF</a>
             </div>
         </div>
         <div class="col-md-4">
 
             <div id="search-input" class="form-group mb-3 ">
-                <input type="text" id="searchField2" class="form-control" placeholder="Search">
+                <input type="text" id="searchField4" class="form-control" placeholder="Search">
             </div>
 
         </div>
@@ -95,7 +66,7 @@
                 <tr>
                    <th>Group name</th>
                    <th>Number of trees</th>
-                   <th>percentage</th>
+                   <th>Percentage</th>
                 </tr>
             </thead>
     
@@ -111,7 +82,53 @@
         </table>    
     </div>
 
-    
+    <div class="table-output">
+      <table class="table table-stripped table-hover ">
+          <thead>
+              <tr>
+                <th>Group name</th>
+                <th>Number of trees</th>
+                <th>Percentage</th>
+              </tr>
+          </thead>
+  
+          <tbody class="table-body">
+
+             
+          </tbody>
+      </table>
+  </div>
+  
+
+  <div class="row paginator-container">
+    <div id="pagination" class="col-md-8 fw-bold">
+        Showing page {{ diff_trees.number }} of {{ diff_trees.paginator.num_pages }}
+    </div>
+
+    <div class="col-md-4">
+        <ul class="pagination align-right float-right mr-auto">
+            {% if diff_trees.has_previous %}
+                <li {% if diff_trees.number == 1 %}class="page-item active"{% endif %}>
+                    <a href="?page=1" class="page-link">&laquo; 1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ diff_trees.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+
+            {% if diff_trees.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ diff_trees.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ diff_trees.paginator.num_pages }}">{{ diff_trees.paginator.num_pages }} &raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+  
 
     
     </div>
@@ -123,6 +140,6 @@
 
 
 
-<script src="{% static 'js/searchForest.js' %}"></script>
+<script src="{% static 'js/searchDifference.js' %}"></script>
 
 {% endblock %}

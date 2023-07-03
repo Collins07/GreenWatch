@@ -238,8 +238,34 @@ def difference(request):
      # Sort the diff_trees list based on the percentage in descending order
     diff_trees = sorted(diff_trees, key=itemgetter('percentage'), reverse=True)
 
+    paginator = Paginator(diff_trees,5) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+
     context = {
-        'diff_trees': diff_trees,
+        'diff_trees': page_obj,
+        'paginator': paginator,
     }
 
     return render(request, 'forests/difference.html', context)
+
+
+def search_difference(request):
+    if request.method == 'POST':
+        search_str = json.loads(request.body).get('searchText')
+        
+        first_entry_trees = Reforest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+        second_entry_trees = Forest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+
+        diff_trees = calculate_trees_difference(first_entry_trees, second_entry_trees)
+
+        # Filter the diff_trees list based on the search criteria
+        filtered_trees = [tree for tree in diff_trees if search_str.lower() in tree['description'].lower()]
+
+        # Sort the filtered_trees list based on the percentage in descending order
+        filtered_trees = sorted(filtered_trees, key=itemgetter('percentage'), reverse=True)
+
+        return JsonResponse(filtered_trees, safe=False)
+
+    return JsonResponse([], safe=False)
