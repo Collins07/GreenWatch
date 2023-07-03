@@ -69,28 +69,36 @@ def add_trees(request):
     
     if request.method == 'POST':
         trees_planted = request.POST['trees_planted']
+        description = request.POST['description']
+        date_str = request.POST['date']
+        category = request.POST['category']
 
         if not trees_planted:
-            messages.error(request,'Number of trees planted required !!!')
+            messages.error(request, 'Number of trees planted is required!')
             return render(request, 'reforest/add_trees.html', context)
-        description = request.POST['description']
-        date = request.POST['date']
-        category = request.POST['category']
-        
-    if request.method == 'POST':
-        description = request.POST['description']
 
         if not description:
-            messages.error(request,' The name of your group is required !!!')
+            messages.error(request, 'The name of your group is required!')
             return render(request, 'reforest/add_trees.html', context)
-        
-        Reforest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=date, category=category)
+
+        # Parse date string into date object
+        try:
+            parsed_date = datetime.date.fromisoformat(date_str)
+        except ValueError:
+            messages.error(request, 'Invalid date format. Please provide a valid date.')
+            return render(request, 'reforest/add_trees.html', context)
+
+        # Check if the date is in the future
+        if parsed_date > datetime.date.today():
+            messages.error(request, 'Invalid date. Please select a past or today\'s date.')
+            return render(request, 'reforest/add_trees.html', context)
+
+        Reforest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=parsed_date, category=category)
         messages.success(request, 'Data saved successfully')
 
         return redirect('reforest')
 
-    return render(request, 'reforest/add_trees.html', context)    
-
+    return render(request, 'reforest/add_trees.html', context)
 
 
 def home(request):

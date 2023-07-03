@@ -102,20 +102,20 @@ def add_forest(request):
             messages.error(request, 'The name of your group is required!')
             return render(request, 'forests/add_forest.html', context)
         
-         # Parse date string into date object
+        # Parse date string into date object
         try:
-            date = parser.parse(date_str).date()
+            parsed_date = datetime.date.fromisoformat(date_str)
         except ValueError:
             messages.error(request, 'Invalid date format. Please provide a valid date.')
             return render(request, 'forests/add_forest.html', context)
 
-
         # Check if the date is in the past or today
-        if date > str(date.today()):
+        if parsed_date > datetime.date.today():
             messages.error(request, 'Invalid date. Please select a past or today\'s date.')
             return render(request, 'forests/add_forest.html', context)
 
-        Forest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=date)
+
+        Forest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=parsed_date)
         messages.success(request, 'Data saved successfully')
 
         return redirect('forest')
