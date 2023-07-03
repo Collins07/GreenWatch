@@ -9,6 +9,7 @@ urlpatterns = [
      path('search-difference' , csrf_exempt(views.search_difference), name='search_difference'),
      path ('export_csv', views.export_csv, name='export-csv'),
      path ('export_pdf', views.export_pdf, name='export-pdf'),
+     path ('export_difference_pdf', views.export_difference_pdf, name='export-difference-pdf'),
     path ('trend', views.difference, name='trend'),
 
 

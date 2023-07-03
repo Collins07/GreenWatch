@@ -12,6 +12,8 @@ from django.db.models import Sum
 from django.http import Http404, JsonResponse, HttpResponse
 import datetime
 import csv
+import base64
+import os
 
 from django.template.loader import render_to_string, get_template
 from xhtml2pdf import pisa
@@ -218,7 +220,7 @@ def calculate_trees_difference(first_entry_trees, second_entry_trees):
         if second_entries:
             second_entry = second_entries.first()
             second_entry_trees_planted = second_entry['trees_planted']
-            difference = second_entry_trees_planted - first_entry_trees_planted
+            difference = first_entry_trees_planted - second_entry_trees_planted 
             percentage = (second_entry_trees_planted/ first_entry_trees_planted) * 100
             diff_trees.append({
                 'description': description,
@@ -269,3 +271,34 @@ def search_difference(request):
         return JsonResponse(filtered_trees, safe=False)
 
     return JsonResponse([], safe=False)
+
+
+
+def export_difference_pdf(request):
+    # Get the difference between entries
+    first_entry_trees = Reforest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+    second_entry_trees = Forest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
+    diff_trees = calculate_trees_difference(first_entry_trees, second_entry_trees)
+    diff_trees = sorted(diff_trees, key=itemgetter('percentage'), reverse=True)
+
+    # Prepare the data for PDF template
+    template = get_template('forests/difference_pdf.html')
+    context = {'diff_trees': diff_trees}
+    html = template.render(context)
+
+    # Generate PDF
+    result = BytesIO()
+    pisa.CreatePDF(html, dest=result)
+
+    # Prepare and return the HTTP response with PDF attachment
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Trends.pdf"'
+    pdf = result.getvalue()
+    response.write(pdf)
+
+    return response
+
+image_path = os.path.join('reforestation','static', 'img', 'greenlg1.jpg')
+
+with open(image_path, 'rb') as image_file:
+    encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
