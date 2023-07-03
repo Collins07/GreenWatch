@@ -34,7 +34,7 @@ def search_reforest(request):
 
 def index(request):
     
-    reforest = Reforest.objects.all()
+    reforest = Reforest.objects.order_by('-date')
     total_trees = reforest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 
     highest_entry = reforest.order_by('-trees_planted').first()

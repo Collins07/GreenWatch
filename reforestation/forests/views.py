@@ -43,7 +43,7 @@ def search_forest(request):
 
 def forest(request):
     
-    forest = Forest.objects.all()
+    forest = Forest.objects.order_by('-date')
     total_trees = forest.aggregate(total_trees_planted=Sum('trees_planted'))['total_trees_planted']
 
     first_entry_trees = Reforest.objects.values('description').annotate(trees_planted=F('trees_planted')).order_by('description')
