@@ -14,18 +14,25 @@
         <style>
             /* Add your desired CSS styles here */
             
-            #mantra{
-            color: rgb(76, 90, 76);
-            margin-left: 241px;
+            .mantra{
+            color: rgb(10, 10, 10);
             
             }
             #title{
-                margin-left: 15%;
                 color: rgb(85, 85, 85);
                 text-decoration: underline;
                 margin-top: 3%;
-                margin-left: 300px;
+                margin-left: 270px;
                 font-size: 17px;
+            }
+            #company {
+                font-size: 30px;
+                color: green;
+                font-weight: bolder;
+            }
+            #logo{
+                margin-bottom: 40px;
+                text-align: center;
             }
             table {
                 width: 100%;
@@ -41,14 +48,8 @@
             #signatory {
                 display: flex;
             }
-            #company {
-                font-size: 30px;
-                margin-left: 250px;
-                color: green;
-            }
-            #col2{
-                margin-bottom: -100px;
-            }
+            
+            
             .paragraph{
                 font-size: 13px;
             }
@@ -77,28 +78,17 @@
     </head>
     <body>
 
-         <!-- badge -->
-    <div class="container">
-        <div class="row">
-            <div id="col1" class="col-4"></div>
-            <div id="col2" class="col-4 mt-5  d-flex justify-content-center">
-                <img src="data:image/jpeg;base64,{{ encoded_image }}" alt="" class="bi me-2" width="85" height="75" role="img" >
-               
-                <h1 id="company" class="fw-bold text-center">GreenLead</h1>
-            </div>
-            <div id="col3" class="col-4"></div>
-        </div>
-    </div>
+  
     
     <!-- company name -->
 
     <div class="container">
         <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 ">
-                <!-- <p id="mantra" class="text-center "><strong><i>Sustainability through accountability</i></strong></p> -->
+            <div class="col-12 ">
+                <p id="logo"><span id="company" class="fw-bold text-center">GreenLead</span> <br>
+                    <span class="mantra"><strong><i>Sustainability through accountability</i></strong></span>
+                </p>
             </div>
-            <div class="col-4"></div>
         </div>
     </div>
 
@@ -106,11 +96,9 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6 mt-5 justify-content-center">
-                <h4 id="title" class="fw-bold">Trend</h4>
+            <div class="col-12 mt-5 text-center">
+                <h4 id="title" class="fw-bold">Accountability Score</h4>
             </div>
-            <div class="col-3"></div>
         </div>
     </div>
     
@@ -121,9 +109,12 @@
         
         <div class="col-12 mt-3 ">
             <p class="paragraph">
-                This document contains information as filled our by reforestation and afforestation groups and approved by #GreenLead. The document can be accessed by the public but can <strong>ONLY</strong> be used by GreenLead for other official businesses.
-                The information here is of updated periodic records ( 3 month intervals ) of groups conducting reforestation and afforestation activities as our bigger mission towards fostering for accountability in tree-planting initiatives.
+                At GreenLead, our primary objective is to achieve <strong>sustainability through accountability</strong>. That's why we have developed a unique accountability scoring system for tree-planting activities. 
+                This scoring system measures the <em>difference</em> between a group's initial entry record and their latest update record for the same activity, calculating a <em>percentage</em> that reflects their level of accountability. 
+                The higher the percentage, the higher the score, indicating areas such as responsibility, credibility, integrity, and improvement opportunities for the group.
             </p>
+            <p class="paragraph">
+                This document contains information as filled our by reforestation and afforestation groups and approved by #GreenLead. The document can be accessed by the public but can <strong>ONLY</strong> be used by GreenLead for other official businesses.
         
        </div>
     </div>
@@ -141,7 +132,7 @@
                         <th>#</th>
                         <th>Group Name</th>
                         <th>Difference in No. of trees</th>
-                        <th>Percentage</th>
+                        <th>Percentage score</th>
                     </tr>
                 </thead>
                 <tbody class="paragraph">

@@ -6,7 +6,7 @@
 {% block content %}
 
 
-
+.
 <div class="home-content mb-4">
     <div class="overview-boxes">
       <div class="box">
@@ -56,7 +56,7 @@
 
 
 
-    <div class="sales-boxes">
+    <div class="sales-boxes responsive">
       <div class="recent-sales box">
         <div class="title">Recent data</div>
         <p class="m-3">Under <strong>name</strong> category, enter the name of your group and the county you carried out your tree-planting initiative like <strong>Group A - Nairobi county</strong>
@@ -86,8 +86,8 @@
           </div>
       
       
-          <div class="app-table">
-              <table class="table table-stripped table-hover ">
+          <div class="app-table responsive">
+              <table class="table table-stripped table-hover">
                   <thead>
                       <tr>
                          <th>Trees planted</th>
@@ -105,9 +105,6 @@
                           <td>{{reforest.description}}</td>
                           <td>{{reforest.category}}</td>
                           <td>{{reforest.date}}</td>
-
-                         
-                          
           
                           <!-- <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
                       </tr>
