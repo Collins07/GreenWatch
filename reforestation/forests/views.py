@@ -292,7 +292,7 @@ def export_difference_pdf(request):
 
     # Prepare and return the HTTP response with PDF attachment
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="Trends.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="Accountability Score.pdf"'
     pdf = result.getvalue()
     response.write(pdf)
 
