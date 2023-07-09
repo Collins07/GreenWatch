@@ -7,7 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 urlpatterns = [
-    path('', views.carbon, name="carbon"),
+    path('susbscribe', views.carbon, name="carbon"),
+    path('benefits', views.benefits, name="benefits"),
      
     
 ]
