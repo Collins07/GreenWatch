@@ -172,15 +172,15 @@ def forest_delete(request,id):
 
 def export_csv(request):
     response = HttpResponse(content_type = 'text/csv')
-    response['Content-Disposition']= 'attachment; filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
+    response['Content-Disposition']= 'attachment; filename=Reforestation & Afforestation Update Records '+ str(datetime.datetime.now())+'.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['Trees Planted', 'Group Name', 'Date'])
+    writer.writerow(['Group Name', 'Trees Planted',  'Date'])
 
     forest=Forest.objects.all()
 
     for tree in forest:
-        writer.writerow([tree.trees_planted, tree.description,tree.date])
+        writer.writerow([ tree.description, tree.trees_planted, tree.date])
         
     return response 
 
@@ -292,7 +292,7 @@ def export_difference_pdf(request):
 
     # Prepare and return the HTTP response with PDF attachment
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="Accountability Score.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="Accountability_Score.pdf"'
     pdf = result.getvalue()
     response.write(pdf)
 

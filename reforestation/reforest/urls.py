@@ -14,7 +14,7 @@ urlpatterns = [
     path('reforest_category_summary', views.reforest_category_summary, 
          name="reforest_category_summary"),
     path ('stats', views.stats, name='stats'),
-    path ('export_csv', views.export_csv, name='export-csv'),
+    path ('export_csv_reforest/', views.export_csv_reforest, name='export-csv-reforest'),
     path ('export_pdfs/', views.export_pdfs, name='export-pdfs'),
     
      

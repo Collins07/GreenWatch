@@ -192,18 +192,18 @@ def reforest_category_summary(request):
 def stats(request):
     return render (request, 'reforest/stats.html')
 
-def export_csv(request):
+def export_csv_reforest(request):
     response = HttpResponse(content_type = 'text/csv')
-    response['Content-Disposition']= 'attachment; filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
+    response['Content-Disposition']= 'attachment; filename=Reforestation & Afforestation Records '+ str(datetime.datetime.now())+'.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['Trees Planted', 'Group Name', 'Category', 'Date'])
+    writer.writerow(['Group Name', 'Category', 'Trees Planted', 'Date'])
 
     reforest=Reforest.objects.all()
 
     for tree in reforest:
-        writer.writerow([tree.trees_planted, tree.description,
-                         tree.category,tree.date])
+        writer.writerow([tree.description,
+                         tree.category, tree.trees_planted, tree.date])
         
     return response 
 
