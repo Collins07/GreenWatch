@@ -494,7 +494,14 @@
   #hanging-icons{
     display: block;
   }
+ #logo{
+    font-size: 26px;
 
+ }
+ #logo-img{
+  height: 53px;
+  width: 53px;
+ }
  
 
 
