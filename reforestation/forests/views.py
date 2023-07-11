@@ -19,6 +19,8 @@ from django.template.loader import render_to_string, get_template
 from xhtml2pdf import pisa
 from io import BytesIO
 from dateutil import parser
+from django.template import RequestContext
+from django.conf import settings
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -283,8 +285,8 @@ def export_difference_pdf(request):
 
     # Prepare the data for PDF template
     template = get_template('forests/difference_pdf.html')
-    context = {'diff_trees': diff_trees}
-    html = template.render(context)
+    context = {'diff_trees': diff_trees, 'STATIC_URL': settings.STATIC_URL, 'HOST': request.META['HTTP_HOST']}
+    html = template.render(context, request)
 
     # Generate PDF
     result = BytesIO()
@@ -297,8 +299,3 @@ def export_difference_pdf(request):
     response.write(pdf)
 
     return response
-
-image_path = os.path.join('reforestation','static', 'img', 'greenlg1.jpg')
-
-with open(image_path, 'rb') as image_file:
-    encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
