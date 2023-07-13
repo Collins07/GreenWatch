@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'greenlead'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C5C53112AF5E4644A54B568A0FE4C2CB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5A7854B52EF841A9BEDD3D0D65FC3A7C }}
